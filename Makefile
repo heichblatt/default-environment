@@ -13,7 +13,7 @@ upgrade:
 	$(UPGRADE)
 
 system: pass
-	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic
+	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic libxslt-dev libxml2-dev
 	usermod -aG sudo $(USERNAME)
 
 multimedia:
@@ -32,6 +32,7 @@ virtualization:
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
 	usermod -aG vboxusers $(USERNAME)
+	gem install fog --version 1.8 && gem install veewee --no-ri --no-rdoc # until veewee issue 611 is fixed
 
 development:
 	$(INSTALL) gitg meld build-essential
