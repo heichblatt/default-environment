@@ -1,0 +1,3 @@
+h1. My Computing Environment
+
+This repository contains everything I need to configure a new computer by running @make all@ as @root@.
