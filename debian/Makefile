@@ -3,7 +3,7 @@ INSTALL=apt-get install -y
 UPDATE=apt-get update
 UPGRADE=apt-get dist-upgrade -y
 USERNAME=heichblatt
-DISTFILESDIR=./distfiles
+DISTFILESDIR=../distfiles
 DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
 
 all: system productivity development multimedia network virtualization latex upgrade clean
@@ -40,13 +40,13 @@ development:
 productivity:
 	$(INSTALL) gnome calibre encfs rubygems ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks xul-ext-zotero icedove enigmail xul-ext-downthemall xul-ext-adblock-plus xul-ext-firebug xul-ext-flashblock xul-ext-gcontactsync gnupg2 libnotify-bin deja-dup
 	gem install jekyll --no-ri --no-rdoc
-	su $(USERNAME) ./configure-gnome-shell.sh
+	su $(USERNAME) ../configure-gnome-shell.sh
 
 google-chrome: distfiles-dir
 	$(DOWNLOADDISTFILE) https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	-dpkg -i $(DISTFILESDIR)/google-chrome-stable_current_amd64.deb
 	$(INSTALL) -f
-	cp ./google-chrome/google-chrome.desktop /usr/share/applications
+	cp ..f/google-chrome/google-chrome.desktop /usr/share/applications
 
 latex:
 	$(INSTALL) texlive-fonts-recommended texlive-latex-base texlive-lang-german gedit-latex-plugin texlive-latex-extra texlive-latex-recommended gummi
@@ -57,7 +57,7 @@ pass:
 	$(INSTALL) -f
 
 user-dirs:
-	cp ./user-dirs/* ~/.config
+	cp ../user-dirs/* ~/.config
 	xdg-user-dirs-update
 
 distfiles-dir:
