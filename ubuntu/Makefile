@@ -8,7 +8,7 @@ USERNAME = heichblatt
 DOWNLOADDISTFILE=wget -c --directory-prefix=$(DISTFILESDIR)
 ADDPPA = apt-add-repository -y 
 
-all: upgrade distfilesdir system network development productivity multimedia virtualization latex clean
+all: upgrade distfilesdir system network development productivity configure-git multimedia virtualization latex clean
 
 system:
 	$(INSTALL) tmux htop iftop iotop git-core etckeeper vim build-essential ubuntu-restricted-extras sudo ncdu pass synaptic trash-cli
@@ -57,6 +57,10 @@ development:
 productivity:
 	$(INSTALL) calibre encfs rubygems ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks gnupg2 libnotify-bin deja-dup graphviz
 	gem install jekyll --no-ri --no-rdoc
+
+configure-git:
+	git config --global user.name "Hannes Eichblatt"
+	git config --global user.email mail@hanneseichblatt.de
 
 upgrade:
 	$(UPDATE)
