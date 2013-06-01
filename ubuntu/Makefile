@@ -2,6 +2,7 @@ SHELL = /bin/bash
 INSTALL = apt-get install -y
 UPDATE = apt-get update
 UPGRADE = apt-get dist-upgrade -y
+REMOVE = apt-get autoremove --purge -y
 DISTFILESDIR = ../distfiles
 USERNAME = heichblatt
 DOWNLOADDISTFILE=wget -c --directory-prefix=$(DISTFILESDIR)
@@ -11,6 +12,7 @@ all: upgrade distfilesdir system network development productivity multimedia vir
 
 system:
 	$(INSTALL) tmux htop iftop iotop git-core etckeeper vim build-essential ubuntu-restricted-extras sudo ncdu pass synaptic trash-cli
+	-$(REMOVE) apport
 
 multimedia: system
 	$(INSTALL) vlc mplayer
