@@ -55,7 +55,7 @@ development:
 	$(INSTALL) gitg meld build-essential
 
 productivity:
-	$(INSTALL) calibre encfs rubygems ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks gnupg2 libnotify-bin deja-dup
+	$(INSTALL) calibre encfs rubygems ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks gnupg2 libnotify-bin deja-dup graphviz
 	gem install jekyll --no-ri --no-rdoc
 
 upgrade:
