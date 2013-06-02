@@ -12,7 +12,7 @@ SRCDIR = $(HOME)/src
 all: upgrade distfilesdir system network development productivity configure-git multimedia virtualization latex clean
 
 system:
-	$(INSTALL) tmux htop iftop iotop git-core etckeeper vim build-essential ubuntu-restricted-extras sudo ncdu pass synaptic trash-cli rsnapshot
+	$(INSTALL) tmux htop iftop iotop git-core etckeeper vim build-essential ubuntu-restricted-extras sudo ncdu pass synaptic trash-cli rsnapshot mc
 	-$(REMOVE) apport
 
 multimedia: system
