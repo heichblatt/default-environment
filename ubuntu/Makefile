@@ -79,3 +79,7 @@ srcdir-exists:
 upgrade:
 	$(UPDATE)
 	$(UPGRADE)
+
+pidgin-jabber-ccc-cert:
+	mkdir -pv $(HOME)/.purple/certificates/x509/tls_peers/
+	cp -v ./../certs/jabber.ccc.de $(HOME)/.purple/certificates/x509/tls_peers/
