@@ -26,6 +26,7 @@ network: distfilesdir
 	$(ADDPPA) ppa:ajf/trg
 	$(UPDATE)
 	$(INSTALL) transmission-remote-gtk
+	echo "x-scheme-handler/magnet=transmission-remote-gtk.desktop" >> $(HOME)/.local/share/applications/mimeapps.list
 	$(ADDPPA) ppa:upubuntu-com/tor64
 	$(UPDATE)
 	$(INSTALL) tor-browser
