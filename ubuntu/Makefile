@@ -16,7 +16,7 @@ system:
 	-$(REMOVE) apport
 
 multimedia: system
-	$(INSTALL) vlc mplayer
+	$(INSTALL) vlc mplayer moc
 
 network: distfilesdir
 	$(INSTALL) network-manager-openvpn-gnome network-manager-openvpn nmap wireshark torsocks tor sshfs transgui openssh-server
