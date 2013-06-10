@@ -9,7 +9,7 @@ DOWNLOADDISTFILE=wget -c --directory-prefix=$(DISTFILESDIR)
 ADDPPA = apt-add-repository -y 
 SRCDIR = $(HOME)/src
 
-all: upgrade distfilesdir system network development productivity configure-git multimedia virtualization latex clean
+all: upgrade distfilesdir system network development productivity configure-git multimedia virtualization latex pidgin-jabber-ccc-cert clean
 
 system:
 	$(INSTALL) tmux htop iftop iotop git-core etckeeper vim build-essential ubuntu-restricted-extras sudo ncdu pass synaptic trash-cli rsnapshot mc
