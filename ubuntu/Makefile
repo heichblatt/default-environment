@@ -23,6 +23,9 @@ network: distfilesdir
 	$(DOWNLOADDISTFILE) https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	-dpkg -i $(DISTFILESDIR)/google-chrome-stable_current_amd64.deb
 	$(INSTALL) -f
+	$(ADDPPA) ppa:jd-team/jdownloader
+	$(UPDATE)
+	$(INSTALL) jdownloader-installer
 	$(ADDPPA) ppa:ajf/trg
 	$(UPDATE)
 	$(INSTALL) transmission-remote-gtk
