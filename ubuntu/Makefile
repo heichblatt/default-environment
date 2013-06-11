@@ -19,7 +19,7 @@ multimedia: system
 	$(INSTALL) vlc mplayer moc
 
 network: distfilesdir
-	$(INSTALL) network-manager-openvpn-gnome network-manager-openvpn nmap wireshark torsocks tor sshfs transgui openssh-server
+	$(INSTALL) network-manager-openvpn-gnome network-manager-openvpn nmap wireshark torsocks tor sshfs transgui openssh-server ike
 	$(DOWNLOADDISTFILE) https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	-dpkg -i $(DISTFILESDIR)/google-chrome-stable_current_amd64.deb
 	$(INSTALL) -f
