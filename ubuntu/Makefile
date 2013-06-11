@@ -9,7 +9,7 @@ DOWNLOADDISTFILE=wget -c --directory-prefix=$(DISTFILESDIR)
 ADDPPA = apt-add-repository -y 
 SRCDIR = $(HOME)/src
 
-all: upgrade distfilesdir system network development productivity configure-git multimedia virtualization latex pidgin-jabber-ccc-cert clean
+all: upgrade distfilesdir system network development productivity sublime-text configure-git multimedia virtualization latex pidgin-jabber-ccc-cert clean
 
 system:
 	$(INSTALL) tmux htop iftop iotop git-core etckeeper vim build-essential ubuntu-restricted-extras sudo ncdu pass synaptic trash-cli rsnapshot mc
@@ -83,3 +83,8 @@ upgrade:
 pidgin-jabber-ccc-cert:
 	mkdir -pv $(HOME)/.purple/certificates/x509/tls_peers/
 	cp -v ./../certs/jabber.ccc.de $(HOME)/.purple/certificates/x509/tls_peers/
+
+sublime-text:
+	$(ADDPPA) ppa:webupd8team/sublime-text-2
+	$(UPDATE)
+	$(INSTALL) sublime-text
