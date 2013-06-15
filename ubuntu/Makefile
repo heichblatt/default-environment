@@ -12,11 +12,11 @@ SRCDIR = $(HOME)/src
 all: upgrade distfilesdir system network development productivity sublime-text configure-git multimedia virtualization latex pidgin-jabber-ccc-cert clean
 
 system:
-	$(INSTALL) tmux htop iftop iotop git-core etckeeper vim build-essential ubuntu-restricted-extras sudo ncdu pass synaptic trash-cli rsnapshot mc
+	$(INSTALL) tmux htop iftop iotop git-core etckeeper vim build-essential ubuntu-restricted-extras sudo ncdu pass synaptic trash-cli rsnapshot mc elementary-icon-theme
 	-$(REMOVE) apport
 
 multimedia: system
-	$(INSTALL) vlc mplayer moc
+	$(INSTALL) vlc mplayer moc beets
 
 network: distfilesdir
 	$(INSTALL) network-manager-openvpn-gnome network-manager-openvpn nmap wireshark torsocks tor sshfs transgui openssh-server ike
