@@ -5,6 +5,7 @@ UPGRADE=apt-get dist-upgrade -y
 USERNAME=heichblatt
 DISTFILESDIR=../distfiles
 DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
+INSTALLGEM=gem --no-rdoc --no-ri install
 
 all: system productivity development multimedia network virtualization latex upgrade clean
 
@@ -32,15 +33,15 @@ virtualization:
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
 	usermod -aG vboxusers $(USERNAME)
-	gem install fog --version 1.8 && gem install veewee --no-ri --no-rdoc # until veewee issue 611 is fixed
+	$(INSTALLGEM) install fog --version 1.8 && $(INSTALLGEM) veewee # fixed version until veewee issue 611 is fixed
 
 development:
 	$(INSTALL) gitg meld build-essential
 
 productivity:
 	$(INSTALL) gnome calibre encfs rubygems ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks xul-ext-zotero icedove enigmail xul-ext-downthemall xul-ext-adblock-plus xul-ext-firebug xul-ext-flashblock xul-ext-gcontactsync gnupg2 libnotify-bin deja-dup
-	gem install jekyll --no-ri --no-rdoc
-	su $(USERNAME) ../configure-gnome-shell.sh
+	$(INSTALLGEM) jekyll
+	-su $(USERNAME) ../configure-gnome-shell.sh
 
 google-chrome: distfiles-dir
 	$(DOWNLOADDISTFILE) https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
