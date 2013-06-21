@@ -47,7 +47,7 @@ google-chrome: distfiles-dir
 	$(DOWNLOADDISTFILE) https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	-dpkg -i $(DISTFILESDIR)/google-chrome-stable_current_amd64.deb
 	$(INSTALL) -f
-	cp ..f/google-chrome/google-chrome.desktop /usr/share/applications
+	cp ../google-chrome/google-chrome.desktop /usr/share/applications
 
 latex:
 	$(INSTALL) texlive-fonts-recommended texlive-latex-base texlive-lang-german gedit-latex-plugin texlive-latex-extra texlive-latex-recommended gummi
