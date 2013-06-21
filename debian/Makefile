@@ -19,10 +19,6 @@ system: pass
 	usermod -aG sudo $(USERNAME)
 
 multimedia:
-	echo "deb http://www.deb-multimedia.org stable main non-free" > /etc/apt/sources.list.d/debian-multimedia.list
-	$(UPDATE)
-	$(INSTALL) --force-yes deb-multimedia-keyring
-	$(UPDATE)
 	$(INSTALL) vlc gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly lame pavucontrol mplayer
 
 network: google-chrome
