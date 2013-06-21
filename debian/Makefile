@@ -5,7 +5,7 @@ UPGRADE=apt-get dist-upgrade -y
 USERNAME=heichblatt
 DISTFILESDIR=../distfiles
 DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
-INSTALLGEM=gem --no-rdoc --no-ri install
+INSTALLGEM=gem install --no-rdoc --no-ri
 
 all: system productivity development multimedia network virtualization latex upgrade clean
 
