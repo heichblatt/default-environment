@@ -55,7 +55,9 @@ pass:
 	$(INSTALL) -f
 
 user-dirs:
-	cp ../user-dirs/* ~/.config
+	-mkdir $(HOME)/{Dokumente,Downloads,Vorlagen,Öffentlich,Desktop,Musik,Bilder,Videos}
+	-mkdir -p $(HOME)/.config
+	cp ../user-dirs/* $(HOME)/.config
 	xdg-user-dirs-update
 
 distfiles-dir:
