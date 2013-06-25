@@ -30,7 +30,7 @@ virtualization:
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
 	usermod -aG vboxusers $(USERNAME)
-	$(INSTALLGEM) install fog --version 1.8 $(GEMOPTS) && $(INSTALLGEM) veewee $(GEMOPTS) # fixed version until veewee issue 611 is fixed
+	$(INSTALLGEM) fog --version 1.8 $(GEMOPTS) && $(INSTALLGEM) veewee $(GEMOPTS) # fixed version until veewee issue 611 is fixed
 
 development:
 	$(INSTALL) gitg meld build-essential
