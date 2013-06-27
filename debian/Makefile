@@ -65,3 +65,10 @@ distfiles-dir:
 
 clean:
 	rm -rf $(DISTFILESDIR)
+
+iceweasel-release:
+	sudo echo "deb http://mozilla.debian.net/ wheezy-backports iceweasel-release" > /etc/apt/sources.list.d/iceweasel-release.list
+	$(UPDATE)
+	$(INSTALL) --allow-unauthenticated pkg-mozilla-archive-keyring
+	$(UPDATE)
+	$(INSTALL) -t wheezy-backports iceweasel
