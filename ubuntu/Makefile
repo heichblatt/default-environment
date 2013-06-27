@@ -88,3 +88,7 @@ sublime-text:
 	$(ADDPPA) ppa:webupd8team/sublime-text-2
 	$(UPDATE)
 	$(INSTALL) sublime-text
+
+sudoers-nopasswd:
+	echo $(USERNAME)" ALL = NOPASSWD: ALL" >> /etc/sudoers.d/nopasswd
+	chmod 0440 /etc/sudoers.d/nopasswd
