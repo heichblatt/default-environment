@@ -3,6 +3,6 @@ h1. My Default Computing Environment
 # Get new computer.
 # Install basic operating system, @make@ and @git-core@.
 # @git clone@ this repo.
-# @cd $REPO@
+# @cd $REPO/debian@
 # @sudo make@
 # Profit!
