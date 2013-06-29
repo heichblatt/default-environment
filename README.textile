@@ -1,3 +1,7 @@
 h1. My Computing Environment
 
-This repository contains everything I need to configure a new computer by running @make all@ as @root@.
+# Get new computer.
+# Install basic operating system and @git-core@.
+# @git clone@ this repo.
+# @cd $REPO@
+# @sudo make@
