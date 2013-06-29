@@ -72,3 +72,11 @@ iceweasel-release:
 	$(INSTALL) --allow-unauthenticated pkg-mozilla-archive-keyring
 	$(UPDATE)
 	$(INSTALL) -t wheezy-backports iceweasel
+
+transmission-remote-gtk: distfiles-dir
+	$(INSTALL) intltool pkg-config libjson-glib-dev libgtk-3-dev libcurl4-gnutls-dev
+	$(DOWNLOADDISTFILE) https://transmission-remote-gtk.googlecode.com/files/transmission-remote-gtk-1.1.1.tar.gz
+	cd $(DISTFILESDIR) && \
+	tar xf transmission-remote-gtk-1.1.1.tar.gz && \
+	cd transmission-remote-gtk-1.1.1/ && \
+	./configure && make && sudo make install
