@@ -24,7 +24,7 @@ multimedia:
 network:
 	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina
 	sudo update-alternatives --set x-www-browser $(which chromium-browser)
-	
+
 virtualization:
 	echo "deb http://download.virtualbox.org/virtualbox/debian wheezy contrib" > /etc/apt/sources.list.d/virtualbox.list
 	wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
