@@ -16,13 +16,13 @@ upgrade:
 	$(UPGRADE)
 
 system: pass
-	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan
+	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall
 	sudo usermod -aG sudo $(USERNAME)
 
 multimedia:
 	$(INSTALL) vlc gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly lame pavucontrol mplayer
 
-network:
+network: transmission-remote-gtk
 	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina
 
 virtualization:
@@ -70,13 +70,13 @@ iceweasel-release:
 	$(UPDATE)
 	$(INSTALL) -t wheezy-backports iceweasel
 
-transmission-remote-gtk: distfiles-dir
+transmission-remote-gtk: distfiles-dir system
 	$(INSTALL) intltool pkg-config libjson-glib-dev libgtk-3-dev libcurl4-gnutls-dev
 	$(DOWNLOADDISTFILE) https://transmission-remote-gtk.googlecode.com/files/transmission-remote-gtk-1.1.1.tar.gz
 	cd $(DISTFILESDIR) && \
 	tar xf transmission-remote-gtk-1.1.1.tar.gz && \
 	cd transmission-remote-gtk-1.1.1/ && \
-	./configure && make && sudo make install
+	./configure --prefix=/usr/ && make && sudo checkinstall -D -y --install
 
 autoremove:
 	sudo apt-get autoremove -y
