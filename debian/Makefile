@@ -30,14 +30,15 @@ virtualization:
 	wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
-	usermod -aG vboxusers $(USERNAME)
+	sudo usermod -aG vboxusers $(USERNAME)
 	$(INSTALLGEM) fog --version 1.8 $(GEMOPTS) && $(INSTALLGEM) veewee $(GEMOPTS) # fixed version until veewee issue 611 is fixed
 
 development:
 	$(INSTALL) gitg meld build-essential
 
-productivity:
-	$(INSTALL) chromium-browser calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks xul-ext-zotero icedove enigmail xul-ext-downthemall xul-ext-firebug xul-ext-flashblock xul-ext-gcontactsync gnupg2 libnotify-bin deja-dup terminator gnome-tweak-tool ttf-mscorefonts-installer vim-gtk
+productivity: iceweasel-release
+	sudo tasksel install desktop
+	$(INSTALL) gnome chromium-browser calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks gnupg2 libnotify-bin deja-dup simple-scan rhythmbox seahorse terminator gnome-tweak-tool ttf-mscorefonts-installer vim-gtk
 	which jekyll || $(INSTALLGEM) jekyll $(GEMOPTS)
 	-$(BASEDIR)/configure-gnome-shell.sh
 
