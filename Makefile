@@ -5,6 +5,7 @@ UPGRADE=sudo apt-get dist-upgrade -y
 USERNAME=heichblatt
 BASEDIR=.
 DISTFILESDIR=$(BASEDIR)/distfiles
+SCRIPTSDIR=$(BASEDIR)/scripts
 DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
 INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
