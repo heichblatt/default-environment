@@ -8,7 +8,7 @@ gsettings set org.gnome.shell.extensions.dock position left
 gsettings set org.gnome.shell.clock show-date true
 gsettings set org.gnome.shell.calendar show-weekdate true
 gsettings set org.gnome.shell enabled-extensions "['alternative-status-menu@gnome-shell-extensions.gcampax.github.com', 'dock@gnome-shell-extensions.gcampax.github.com', 'systemMonitor@gnome-shell-extensions.gcampax.github.com']"
-gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'gedit.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'icedove.desktop', 'libreoffice-writer.desktop', 'empathy.desktop', 'rhythmbox.desktop', 'shotwell.desktop']"
+gsettings set org.gnome.shell favorite-apps "['chromium.desktop', 'gedit.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'icedove.desktop', 'libreoffice-writer.desktop', 'empathy.desktop', 'rhythmbox.desktop', 'shotwell.desktop']"
 gsettings set org.gnome.rhythmbox.plugins active-plugins "['iradio', 'mpris', 'rb', 'mmkeys', 'mtpdevice', 'generic-player', 'artsearch', 'power-manager', 'dbus-media-server', 'audiocd']"
 gsettings set org.gnome.rhythmbox.podcast download-location file:...home.$USER.Podcasts
 gsettings set org.gnome.rhythmbox.player play-order linear
