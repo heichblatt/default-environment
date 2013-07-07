@@ -62,7 +62,7 @@ distfiles-dir:
 	mkdir -p $(DISTFILESDIR)
 
 clean:
-	rm -rf $(DISTFILESDIR)
+	sudo rm -rf $(DISTFILESDIR)
 
 iceweasel-release:
 	sudo cp $(BASEDIR)/sources.list.d/iceweasel-release.list /etc/apt/sources.list.d/
