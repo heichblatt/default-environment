@@ -3,7 +3,7 @@ INSTALL=sudo apt-get install -y
 UPDATE=sudo apt-get update
 UPGRADE=sudo apt-get dist-upgrade -y
 USERNAME=heichblatt
-BASEDIR=..
+BASEDIR=.
 DISTFILESDIR=$(BASEDIR)/distfiles
 DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
 INSTALLGEM=sudo gem install
