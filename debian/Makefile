@@ -24,10 +24,9 @@ multimedia:
 
 network:
 	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina
-	sudo update-alternatives --set x-www-browser $(which chromium-browser)
 
 virtualization:
-	sudo echo "deb http://download.virtualbox.org/virtualbox/debian wheezy contrib" > /etc/apt/sources.list.d/virtualbox.list
+	sudo cp $(BASEDIR)/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
 	wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
@@ -38,7 +37,7 @@ development:
 	$(INSTALL) gitg meld build-essential
 
 productivity:
-	$(INSTALL) calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks xul-ext-zotero icedove enigmail xul-ext-downthemall xul-ext-firebug xul-ext-flashblock xul-ext-gcontactsync gnupg2 libnotify-bin deja-dup terminator gnome-tweak-tool ttf-mscorefonts-installer vim-gtk
+	$(INSTALL) chromium-browser calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks xul-ext-zotero icedove enigmail xul-ext-downthemall xul-ext-firebug xul-ext-flashblock xul-ext-gcontactsync gnupg2 libnotify-bin deja-dup terminator gnome-tweak-tool ttf-mscorefonts-installer vim-gtk
 	which jekyll || $(INSTALLGEM) jekyll $(GEMOPTS)
 	-$(BASEDIR)/configure-gnome-shell.sh
 
