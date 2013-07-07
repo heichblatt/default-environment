@@ -42,7 +42,7 @@ productivity: iceweasel-release
 	sudo tasksel install desktop
 	$(INSTALL) gnome chromium-browser calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks gnupg2 libnotify-bin deja-dup simple-scan rhythmbox seahorse terminator gnome-tweak-tool ttf-mscorefonts-installer vim-gtk flashplugin-nonfree
 	which jekyll || $(INSTALLGEM) jekyll $(GEMOPTS)
-	-$(BASEDIR)/configure-gnome-shell.sh
+	-$(SCRIPTSDIR)/configure-gnome-shell.sh
 
 latex:
 	$(INSTALL) texlive-fonts-recommended texlive-latex-base texlive-lang-german gedit-latex-plugin texlive-latex-extra texlive-latex-recommended gummi
