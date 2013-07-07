@@ -1,31 +1,33 @@
 SHELL=/bin/bash
-INSTALL=apt-get install -y
-UPDATE=apt-get update
-UPGRADE=apt-get dist-upgrade -y
+INSTALL=sudo apt-get install -y
+UPDATE=sudo apt-get update
+UPGRADE=sudo apt-get dist-upgrade -y
 USERNAME=heichblatt
-DISTFILESDIR=../distfiles
+BASEDIR=..
+DISTFILESDIR=$(BASEDIR)/distfiles
 DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
-INSTALLGEM=gem install
+INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
 
-all: system productivity development multimedia network virtualization latex upgrade clean
+all: system productivity iceweasel-release development multimedia network virtualization latex upgrade autoremove clean
 
 upgrade:
 	$(UPDATE)
 	$(UPGRADE)
 
 system: pass
-	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc
-	usermod -aG sudo $(USERNAME)
+	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip
+	sudo usermod -aG sudo $(USERNAME)
 
 multimedia:
 	$(INSTALL) vlc gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly lame pavucontrol mplayer
 
-network: google-chrome
+network:
 	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina
-	
+	sudo update-alternatives --set x-www-browser $(which chromium-browser)
+
 virtualization:
-	echo "deb http://download.virtualbox.org/virtualbox/debian wheezy contrib" > /etc/apt/sources.list.d/virtualbox.list
+	sudo echo "deb http://download.virtualbox.org/virtualbox/debian wheezy contrib" > /etc/apt/sources.list.d/virtualbox.list
 	wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
@@ -36,28 +38,22 @@ development:
 	$(INSTALL) gitg meld build-essential
 
 productivity:
-	$(INSTALL) gnome calibre encfs rubygems ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks xul-ext-zotero icedove enigmail xul-ext-downthemall xul-ext-adblock-plus xul-ext-firebug xul-ext-flashblock xul-ext-gcontactsync gnupg2 libnotify-bin deja-dup terminator gnome-tweak-tool ttf-mscorefonts-installer vim-gtk
-	$(INSTALLGEM) jekyll $(GEMOPTS)
-	-su $(USERNAME) ../configure-gnome-shell.sh
-
-google-chrome: distfiles-dir
-	$(DOWNLOADDISTFILE) https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	-dpkg -i $(DISTFILESDIR)/google-chrome-stable_current_amd64.deb
-	$(INSTALL) -f
-	cp ../google-chrome/google-chrome.desktop /usr/share/applications
+	$(INSTALL) calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks xul-ext-zotero icedove enigmail xul-ext-downthemall xul-ext-firebug xul-ext-flashblock xul-ext-gcontactsync gnupg2 libnotify-bin deja-dup terminator gnome-tweak-tool ttf-mscorefonts-installer vim-gtk
+	which jekyll || $(INSTALLGEM) jekyll $(GEMOPTS)
+	-$(BASEDIR)/configure-gnome-shell.sh
 
 latex:
 	$(INSTALL) texlive-fonts-recommended texlive-latex-base texlive-lang-german gedit-latex-plugin texlive-latex-extra texlive-latex-recommended gummi
 
 pass:
-	$(DOWNLOADDISTFILE) http://ftp.de.debian.org/debian/pool/main/p/password-store/pass_1.4.2-1_all.deb
-	-dpkg -i $(DISTFILESDIR)/pass_*deb
-	$(INSTALL) -f
+	which pass || ( $(DOWNLOADDISTFILE) http://ftp.de.debian.org/debian/pool/main/p/password-store/pass_1.4.2-1_all.deb && \
+	sudo dpkg -i $(DISTFILESDIR)/pass_*deb && \
+	$(INSTALL) -f )
 
 user-dirs:
 	-mkdir $(HOME)/{Dokumente,Downloads,Vorlagen,Öffentlich,Desktop,Musik,Bilder,Videos}
 	-mkdir -p $(HOME)/.config
-	cp ../user-dirs/* $(HOME)/.config
+	cp $(BASEDIR)/user-dirs/* $(HOME)/.config
 	xdg-user-dirs-update
 
 distfiles-dir:
@@ -67,7 +63,7 @@ clean:
 	rm -rf $(DISTFILESDIR)
 
 iceweasel-release:
-	sudo echo "deb http://mozilla.debian.net/ wheezy-backports iceweasel-release" > /etc/apt/sources.list.d/iceweasel-release.list
+	sudo cp $(BASEDIR)/sources.list.d/iceweasel-release.list /etc/apt/sources.list.d/
 	$(UPDATE)
 	$(INSTALL) --allow-unauthenticated pkg-mozilla-archive-keyring
 	$(UPDATE)
@@ -80,3 +76,6 @@ transmission-remote-gtk: distfiles-dir
 	tar xf transmission-remote-gtk-1.1.1.tar.gz && \
 	cd transmission-remote-gtk-1.1.1/ && \
 	./configure && make && sudo make install
+
+autoremove:
+	sudo apt-get autoremove -y
