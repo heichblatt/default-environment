@@ -24,7 +24,7 @@ multimedia:
 	$(INSTALL) vlc gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly lame pavucontrol mplayer
 
 network: transmission-remote-gtk
-	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina
+	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina trickle
 
 virtualization:
 	sudo cp $(BASEDIR)/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
