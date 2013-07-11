@@ -45,7 +45,7 @@ productivity: iceweasel-release
 	-$(SCRIPTSDIR)/configure-gnome-shell.sh
 
 latex:
-	$(INSTALL) texlive-fonts-recommended texlive-latex-base texlive-lang-german gedit-latex-plugin texlive-latex-extra texlive-latex-recommended gummi
+	$(INSTALL) texlive-fonts-recommended texlive-latex-base texlive-lang-german gedit-latex-plugin texlive-latex-extra texlive-latex-recommended gummi latexmk
 
 pass:
 	which pass || ( $(DOWNLOADDISTFILE) http://ftp.de.debian.org/debian/pool/main/p/password-store/pass_1.4.2-1_all.deb && \
