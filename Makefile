@@ -81,3 +81,7 @@ transmission-remote-gtk: distfiles-dir system
 
 autoremove:
 	sudo apt-get autoremove -y
+
+sudoers-nopasswd:
+	sudo cp ./sudoers.d/nopasswd /etc/sudoers.d/$(USERNAME)
+	sudo sed -i 's/USERNAME/$(USERNAME)/g' /etc/sudoers.d/$(USERNAME)
