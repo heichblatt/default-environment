@@ -17,7 +17,7 @@ upgrade:
 	$(UPGRADE)
 
 system: pass
-	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake
+	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar
 	sudo usermod -aG sudo $(USERNAME)
 
 multimedia:
