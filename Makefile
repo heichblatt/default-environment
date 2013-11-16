@@ -16,8 +16,9 @@ upgrade:
 	$(UPDATE)
 	$(UPGRADE)
 
-system: pass
-	$(INSTALL) tmux htop iftop iotop etckeeper git-core vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar
+system: pass git
+	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file
+	sudo apt-file update
 	sudo usermod -aG sudo $(USERNAME)
 
 multimedia:
@@ -35,7 +36,7 @@ virtualization:
 	( gem list | grep "fog (1.8.0)" || $(INSTALLGEM) fog --version 1.8 $(GEMOPTS) ) && \
 		( which veewee | grep veewee || $(INSTALLGEM) veewee $(GEMOPTS) ) # fixed fog version until veewee issue 611 is fixed
 
-development:
+development: git
 	$(INSTALL) gitg meld build-essential
 
 productivity: iceweasel-release
@@ -85,3 +86,13 @@ autoremove:
 sudoers-nopasswd:
 	sudo cp ./sudoers.d/nopasswd /etc/sudoers.d/$(USERNAME)
 	sudo sed -i 's/USERNAME/$(USERNAME)/g' /etc/sudoers.d/$(USERNAME)
+
+git:
+	$(INSTALL) git-core
+	
+offlineimap-from-source: git distfiles-dir
+	cd $(DISTFILESDIR) && \
+	git clone git://github.com/spaetz/offlineimap.git && \
+	cd offlineimap/ && \
+	make clean && make && \
+	sudo checkinstall -y python setup.py install
