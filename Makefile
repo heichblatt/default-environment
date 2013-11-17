@@ -50,7 +50,7 @@ latex:
 
 pass:
 	which pass || ( $(DOWNLOADDISTFILE) http://ftp.de.debian.org/debian/pool/main/p/password-store/pass_1.4.2-1_all.deb && \
-	sudo dpkg -i $(DISTFILESDIR)/pass_*deb && \
+	sudo dpkg -i $(DISTFILESDIR)/pass_*deb ; \
 	$(INSTALL) -f )
 
 user-dirs:
