@@ -10,7 +10,7 @@ DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
 INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
 
-all: sudoers-nopasswd system productivity iceweasel-release development multimedia network virtualization latex upgrade autoremove clean
+all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network virtualization latex upgrade autoremove clean
 
 upgrade:
 	$(UPDATE)
