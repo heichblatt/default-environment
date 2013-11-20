@@ -4,5 +4,5 @@ h1. My Default Computing Environment
 # Install "Debian wheezy":http://www.debian.org/releases/wheezy/, @make@ and @git-core@.
 # @git clone@ this repo.
 # @cd $REPO/debian@
-# @sudo make@
+# @make@
 # Profit!
