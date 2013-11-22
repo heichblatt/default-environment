@@ -17,7 +17,8 @@ upgrade:
 	$(UPGRADE)
 
 system: pass git
-	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file
+	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file command-not-found
+	sudo update-command-not-found
 	sudo apt-file update
 	sudo usermod -aG sudo $(USERNAME)
 
