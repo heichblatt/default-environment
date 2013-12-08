@@ -97,3 +97,8 @@ offlineimap-from-source: git distfiles-dir
 	cd offlineimap/ && \
 	make clean && make && \
 	sudo checkinstall -y python setup.py install
+
+pidgin-jabber-ccc-cert:
+	mkdir -pv $(HOME)/.purple/certificates/x509/tls_peers/
+	cp -v ./certs/jabber.ccc.de $(HOME)/.purple/certificates/x509/tls_peers/
+
