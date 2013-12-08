@@ -105,3 +105,8 @@ pidgin-jabber-ccc-cert:
 multiarch:
 	sudo dpkg --add-architecture i386
 	sudo apt-get update
+
+skype: distfiles-dir multiarch
+	wget -O $(DISTFILESDIR)/skype.deb http://www.skype.com/go/getskype-linux-deb
+	sudo dpkg -i $(DISTFILESDIR)/skype.deb
+	$(INSTALL) -f
