@@ -29,7 +29,7 @@ network: transmission-remote-gtk
 	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina trickle
 
 virtualization:
-	sudo cp $(BASEDIR)/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
+	sudo cp $(BASEDIR)/etc/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
 	wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
@@ -67,7 +67,7 @@ clean:
 	sudo rm -rf $(DISTFILESDIR)
 
 iceweasel-release:
-	sudo cp $(BASEDIR)/sources.list.d/iceweasel-release.list /etc/apt/sources.list.d/
+	sudo cp $(BASEDIR)/etc/sources.list.d/iceweasel-release.list /etc/apt/sources.list.d/
 	$(UPDATE)
 	$(INSTALL) --allow-unauthenticated pkg-mozilla-archive-keyring
 	$(UPDATE)
@@ -85,7 +85,7 @@ autoremove:
 	sudo apt-get autoremove -y
 
 sudoers-nopasswd:
-	sudo cp ./sudoers.d/nopasswd /etc/sudoers.d/$(USERNAME)
+	sudo cp ./etc/sudoers.d/nopasswd /etc/sudoers.d/$(USERNAME)
 	sudo sed -i 's/USERNAME/$(USERNAME)/g' /etc/sudoers.d/$(USERNAME)
 
 git:
