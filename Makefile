@@ -125,6 +125,6 @@ sublime-text2: distfiles-dir
 	wget -O $(DISTFILESDIR)/sublime-text2.tar.bz2 "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2%20x64.tar.bz2"	
 	cd $(DISTFILESDIR) && \
 		tar xf sublime-text2.tar.bz2 && \
-		sudo mv ./Sublime\ Text\ 2 /opt/
-	sudo ln -s /opt/Sublime\ Text\ 2/sublime_text /usr/bin/sublime && \
-	sudo cp $(BASEDIR)/usr/share/applications/sublime.desktop /usr/share/applications/sublime.desktop
+		sudo mv -f ./Sublime\ Text\ 2 /opt/
+	sudo ln -fs /opt/Sublime\ Text\ 2/sublime_text /usr/bin/sublime && \
+	sudo cp -f $(BASEDIR)/usr/share/applications/sublime.desktop /usr/share/applications/sublime.desktop
