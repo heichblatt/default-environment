@@ -10,14 +10,15 @@ DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
 INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
 
-all: sudoers-nopasswd system productivity iceweasel-release development multimedia network virtualization latex upgrade autoremove clean
+all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network virtualization latex upgrade autoremove clean
 
 upgrade:
 	$(UPDATE)
 	$(UPGRADE)
 
 system: pass git
-	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file
+	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file command-not-found
+	sudo update-command-not-found
 	sudo apt-file update
 	sudo usermod -aG sudo $(USERNAME)
 
@@ -28,7 +29,7 @@ network: transmission-remote-gtk
 	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina trickle
 
 virtualization:
-	sudo cp $(BASEDIR)/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
+	sudo cp $(BASEDIR)/etc/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
 	wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
@@ -66,7 +67,7 @@ clean:
 	sudo rm -rf $(DISTFILESDIR)
 
 iceweasel-release:
-	sudo cp $(BASEDIR)/sources.list.d/iceweasel-release.list /etc/apt/sources.list.d/
+	sudo cp $(BASEDIR)/etc/sources.list.d/iceweasel-release.list /etc/apt/sources.list.d/
 	$(UPDATE)
 	$(INSTALL) --allow-unauthenticated pkg-mozilla-archive-keyring
 	$(UPDATE)
@@ -84,7 +85,7 @@ autoremove:
 	sudo apt-get autoremove -y
 
 sudoers-nopasswd:
-	sudo cp ./sudoers.d/nopasswd /etc/sudoers.d/$(USERNAME)
+	sudo cp ./etc/sudoers.d/nopasswd /etc/sudoers.d/$(USERNAME)
 	sudo sed -i 's/USERNAME/$(USERNAME)/g' /etc/sudoers.d/$(USERNAME)
 
 git:
@@ -96,3 +97,25 @@ offlineimap-from-source: git distfiles-dir
 	cd offlineimap/ && \
 	make clean && make && \
 	sudo checkinstall -y python setup.py install
+
+pidgin-jabber-ccc-cert:
+	mkdir -pv $(HOME)/.purple/certificates/x509/tls_peers/
+	cp -v ./certs/jabber.ccc.de $(HOME)/.purple/certificates/x509/tls_peers/
+
+multiarch:
+	sudo dpkg --add-architecture i386
+	sudo apt-get update
+
+skype: distfiles-dir multiarch
+	wget -O $(DISTFILESDIR)/skype.deb http://www.skype.com/go/getskype-linux-deb
+	sudo dpkg -i $(DISTFILESDIR)/skype.deb
+	$(INSTALL) -f
+
+mpd:
+	$(INSTALL) mpd sonata ncmpcpp
+	sudo cp -v ./etc/mpd.conf /etc/
+	mkdir -pv $(HOME)/.mpd
+	mkdir -pv $(HOME)/.mpd/playlists
+	sudo sed -i 's/HOME/\/home\/$(USERNAME)/g' /etc/mpd.conf
+	sudo sed -i 's/USERNAME/$(USERNAME)/g' /etc/mpd.conf
+	sudo service mpd restart
