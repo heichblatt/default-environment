@@ -11,6 +11,7 @@ INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
 
 all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network virtualization latex upgrade autoremove clean
+extras: skype mpd sublime-text2
 
 upgrade:
 	$(UPDATE)
