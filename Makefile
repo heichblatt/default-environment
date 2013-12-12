@@ -110,3 +110,12 @@ skype: distfiles-dir multiarch
 	wget -O $(DISTFILESDIR)/skype.deb http://www.skype.com/go/getskype-linux-deb
 	sudo dpkg -i $(DISTFILESDIR)/skype.deb
 	$(INSTALL) -f
+
+mpd:
+	$(INSTALL) mpd sonata ncmpcpp
+	sudo cp -v ./etc/mpd.conf /etc/
+	mkdir -pv $(HOME)/.mpd
+	mkdir -pv $(HOME)/.mpd/playlists
+	sudo sed -i 's/HOME/\/home\/$(USERNAME)/g' /etc/mpd.conf
+	sudo sed -i 's/USERNAME/$(USERNAME)/g' /etc/mpd.conf
+	sudo service mpd restart
