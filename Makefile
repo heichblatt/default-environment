@@ -10,7 +10,7 @@ DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
 INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
 
-all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network latex upgrade autoremove clean pidgin-jabber-ccc-cert
+all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network upgrade autoremove clean pidgin-jabber-ccc-cert
 extras: skype sublime-text2 latex virtualisation
 
 upgrade:
