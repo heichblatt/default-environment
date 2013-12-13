@@ -30,7 +30,7 @@ network: transmission-remote-gtk
 	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina trickle
 
 virtualisation:
-	sudo cp $(BASEDIR)/etc/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
+	sudo cp $(BASEDIR)/etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
 	wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) virtualbox-4.1
@@ -68,7 +68,7 @@ clean:
 	sudo rm -rf $(DISTFILESDIR)
 
 iceweasel-release:
-	sudo cp $(BASEDIR)/etc/sources.list.d/iceweasel-release.list /etc/apt/sources.list.d/
+	sudo cp $(BASEDIR)/etc/apt/sources.list.d/iceweasel-release.list /etc/apt/sources.list.d/
 	$(UPDATE)
 	$(INSTALL) --allow-unauthenticated pkg-mozilla-archive-keyring
 	$(UPDATE)
@@ -130,7 +130,7 @@ sublime-text2: distfiles-dir
 	sudo cp -f $(BASEDIR)/usr/share/applications/sublime.desktop /usr/share/applications/sublime.desktop
 
 owncloud-client: distfiles-dir
-	sudo cp $(BASEDIR)/etc/sources.list.d/owncloud-client.list /etc/apt/sources.list.d/owncloud-client.list
-	wget -O - http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_7.0/Release.key | sudo apt-key add -
+	sudo cp $(BASEDIR)/etc/apt/sources.list.d/owncloud-client.list /etc/apt/sources.list.d/owncloud-client.list
+	wget -q -O- http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_7.0/Release.key | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) owncloud-client
