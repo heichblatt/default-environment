@@ -3,6 +3,6 @@ h1. My Default Computing Environment
 # Get new computer.
 # Install "Debian wheezy":http://www.debian.org/releases/wheezy/, @make@ and @git-core@.
 # @git clone@ this repo.
-# @cd $REPO/debian@
+# @cd $REPO@
 # @make@
 # Profit!
