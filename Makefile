@@ -9,6 +9,7 @@ SCRIPTSDIR=$(BASEDIR)/scripts
 DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
 INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
+USERBINDIR=$(HOME)/bin
 
 all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network upgrade autoremove clean pidgin-jabber-ccc-cert
 extras: skype sublime-text2 latex virtualisation
@@ -133,6 +134,9 @@ owncloud-client: distfiles-dir
 	wget -q -O- http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_7.0/Release.key | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) owncloud-client
+
+tor-browser:
+	$(SCRIPTSDIR)/install-tor-browser.sh $(USERBINDIR)
 
 gnome:
 	sudo tasksel install desktop
