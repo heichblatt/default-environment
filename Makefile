@@ -11,14 +11,14 @@ INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
 USERBINDIR=$(HOME)/bin
 
-all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network upgrade autoremove clean pidgin-jabber-ccc-cert
+all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network upgrade autoremove clean
 extras: skype sublime-text2 latex virtualisation
 
 upgrade:
 	$(UPDATE)
 	$(UPGRADE)
 
-system: pass git
+system: pass git 
 	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file command-not-found task-german
 	sudo update-command-not-found
 	sudo apt-file update
@@ -42,7 +42,7 @@ virtualisation:
 development: git
 	$(INSTALL) gitg meld build-essential
 
-productivity: iceweasel-release
+productivity: iceweasel-release pidgin-jabber-ccc-cert
 	$(INSTALL) chromium-browser calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks gnupg2 libnotify-bin deja-dup simple-scan rhythmbox seahorse terminator ttf-mscorefonts-installer vim-gtk flashplugin-nonfree cups-pdf graphviz imagemagick icedove icedove-l10n-de irssi irssi-scripts
 	which jekyll || $(INSTALLGEM) jekyll $(GEMOPTS)
 	-$(SCRIPTSDIR)/configure-gnome-shell.sh
