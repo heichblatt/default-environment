@@ -128,3 +128,9 @@ sublime-text2: distfiles-dir
 		sudo mv -f ./Sublime\ Text\ 2 /opt/
 	sudo ln -fs /opt/Sublime\ Text\ 2/sublime_text /usr/bin/sublime && \
 	sudo cp -f $(BASEDIR)/usr/share/applications/sublime.desktop /usr/share/applications/sublime.desktop
+
+owncloud-client: distfiles-dir
+	sudo cp $(BASEDIR)/etc/sources.list.d/owncloud-client.list /etc/apt/sources.list.d/owncloud-client.list
+	wget -O - http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_7.0/Release.key | sudo apt-key add -
+	$(UPDATE)
+	$(INSTALL) owncloud-client
