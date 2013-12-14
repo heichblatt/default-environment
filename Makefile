@@ -130,7 +130,7 @@ sublime-text2: distfiles-dir
 	sudo cp -f $(BASEDIR)/usr/share/applications/sublime.desktop /usr/share/applications/sublime.desktop
 
 owncloud-client: distfiles-dir
-	sudo cp $(BASEDIR)/etc/apt/sources.list.d/owncloud-client.list /etc/apt/sources.list.d/owncloud-client.list
+	sudo cp -f $(BASEDIR)/etc/apt/sources.list.d/owncloud-client.list /etc/apt/sources.list.d/owncloud-client.list
 	wget -q -O- http://download.opensuse.org/repositories/isv:ownCloud:desktop/Debian_7.0/Release.key | sudo apt-key add -
 	$(UPDATE)
 	$(INSTALL) owncloud-client
@@ -148,3 +148,16 @@ kde:
 
 xfce4:
 	$(INSTALL) task-xfce-desktop xfce4 xfce4-goodies
+
+multisystem:
+	sudo cp -f $(BASEDIR)/etc/apt/sources.list.d/multisystem.list /etc/apt/sources.list.d/multisystem.list
+	wget -q http://liveusb.info/multisystem/depot/multisystem.asc -O- | sudo apt-key add -
+	$(UPDATE)
+	$(INSTALL) multisystem
+	sudo usermod -aG adm $(USERNAME)
+
+zfs:
+	wget -O $(DISTFILESDIR)/zfsonlinux.deb "http://archive.zfsonlinux.org/debian/pool/main/z/zfsonlinux/zfsonlinux_2%7Ewheezy_all.deb"
+	sudo dpkg -i $(DISTFILESDIR)/zfsonlinux.deb
+	$(UPDATE)
+	$(INSTALL) debian-zfs
