@@ -12,7 +12,7 @@ GEMOPTS=--no-rdoc --no-ri
 USERBINDIR=$(HOME)/bin
 
 all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network upgrade autoremove clean
-extras: skype sublime-text2 latex virtualisation
+extras: skype sublime-text2 latex virtualisation multisystem zfs
 
 upgrade:
 	$(UPDATE)
@@ -161,3 +161,10 @@ zfs: distfiles-dir
 	sudo dpkg -i $(DISTFILESDIR)/zfsonlinux.deb
 	$(UPDATE)
 	$(INSTALL) debian-zfs
+
+backports:
+	sudo cp -f $(BASEDIR)/etc/apt/sources.list.d/backports.list /etc/apt/sources.list.d/backports.list
+	$(UPDATE)
+
+backported-kernel: backports
+	$(INSTALL) -t wheezy-backports linux-image-amd64 linux-headers-amd64
