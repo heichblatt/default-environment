@@ -45,7 +45,6 @@ development: git
 productivity: iceweasel-release pidgin-jabber-ccc-cert workaround-pidgin-libnotify
 	$(INSTALL) chromium-browser calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks gnupg2 libnotify-bin deja-dup simple-scan rhythmbox seahorse terminator ttf-mscorefonts-installer vim-gtk flashplugin-nonfree cups-pdf graphviz imagemagick icedove icedove-l10n-de irssi irssi-scripts surfraw
 	which jekyll || $(INSTALLGEM) jekyll $(GEMOPTS)
-	-$(SCRIPTSDIR)/configure-gnome-shell.sh
 
 latex:
 	$(INSTALL) texlive-fonts-recommended texlive-latex-base texlive-lang-german gedit-latex-plugin texlive-latex-extra texlive-latex-recommended gummi latexmk
