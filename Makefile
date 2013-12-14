@@ -42,7 +42,7 @@ virtualisation:
 development: git
 	$(INSTALL) gitg meld build-essential
 
-productivity: iceweasel-release pidgin-jabber-ccc-cert
+productivity: iceweasel-release pidgin-jabber-ccc-cert workaround-pidgin-libnotify
 	$(INSTALL) chromium-browser calibre encfs ruby-redcloth vagrant keepassx keepass2 pandoc wine winetricks gnupg2 libnotify-bin deja-dup simple-scan rhythmbox seahorse terminator ttf-mscorefonts-installer vim-gtk flashplugin-nonfree cups-pdf graphviz imagemagick icedove icedove-l10n-de irssi irssi-scripts surfraw
 	which jekyll || $(INSTALLGEM) jekyll $(GEMOPTS)
 	-$(SCRIPTSDIR)/configure-gnome-shell.sh
@@ -168,3 +168,10 @@ backports:
 
 backported-kernel: backports
 	$(INSTALL) -t wheezy-backports linux-image-amd64 linux-headers-amd64
+
+# pidgin-libnotify is missing from Debian wheezy
+# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=706979
+workaround-pidgin-libnotify: distfiles-dir
+	$(DOWNLOADDISTFILE) http://ftp.de.debian.org/debian/pool/main/p/pidgin-libnotify/pidgin-libnotify_0.14-9_amd64.deb
+	-sudo dpkg -i $(DISTFILESDIR)/pidgin-libnotify*deb
+	$(INSTALL) -f
