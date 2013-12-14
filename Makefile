@@ -156,7 +156,7 @@ multisystem:
 	$(INSTALL) multisystem
 	sudo usermod -aG adm $(USERNAME)
 
-zfs:
+zfs: distfiles-dir
 	wget -O $(DISTFILESDIR)/zfsonlinux.deb "http://archive.zfsonlinux.org/debian/pool/main/z/zfsonlinux/zfsonlinux_2%7Ewheezy_all.deb"
 	sudo dpkg -i $(DISTFILESDIR)/zfsonlinux.deb
 	$(UPDATE)
