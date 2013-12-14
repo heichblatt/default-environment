@@ -109,7 +109,7 @@ multiarch:
 
 skype: distfiles-dir multiarch
 	wget -O $(DISTFILESDIR)/skype.deb http://www.skype.com/go/getskype-linux-deb
-	sudo dpkg -i $(DISTFILESDIR)/skype.deb
+	-sudo dpkg -i $(DISTFILESDIR)/skype.deb
 	$(INSTALL) -f
 
 mpd:
