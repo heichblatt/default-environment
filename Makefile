@@ -19,9 +19,11 @@ upgrade:
 	$(UPGRADE)
 
 system: pass git 
-	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file command-not-found task-german
+	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file command-not-found task-german firmware-iwlwifi
 	sudo update-command-not-found
 	sudo apt-file update
+	-sudo modprobe -r iwlwifi && sudo modprobe iwlwifi
+	sudo service network-manager restart
 	sudo usermod -aG sudo $(USERNAME)
 
 multimedia:
