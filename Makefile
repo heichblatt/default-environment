@@ -11,7 +11,7 @@ INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
 USERBINDIR=$(HOME)/bin
 
-all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia network upgrade autoremove clean
+all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia vlsub network upgrade autoremove clean
 extras: skype sublime-text2 latex virtualisation multisystem zfs
 
 upgrade:
@@ -175,4 +175,9 @@ backported-kernel: backports
 workaround-pidgin-libnotify: distfiles-dir
 	$(DOWNLOADDISTFILE) http://ftp.de.debian.org/debian/pool/main/p/pidgin-libnotify/pidgin-libnotify_0.14-9_amd64.deb
 	-sudo dpkg -i $(DISTFILESDIR)/pidgin-libnotify*deb
+	$(INSTALL) -f
+
+vlsub: distfiles-dir
+	wget -cO $(DISTFILESDIR)/vlsub.deb http://addons.videolan.org/CONTENT/content-files/148752-vlc-plugin-vlsub_0.9.10_all.deb
+	-sudo dpkg -i $(DISTFILESDIR)/vlsub.deb
 	$(INSTALL) -f
