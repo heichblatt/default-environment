@@ -18,7 +18,7 @@ upgrade:
 	$(UPDATE)
 	$(UPGRADE)
 
-system: pass git 
+system: pass git blacklist-pcspkr
 	$(INSTALL) tmux htop iftop iotop etckeeper vim sudo ncdu pass synaptic libxslt-dev libxml2-dev zlib1g-dev mc renameutils rubygems python-pip deborphan checkinstall etherwake unrar apt-file command-not-found task-german firmware-iwlwifi
 	sudo update-command-not-found
 	sudo apt-file update
@@ -183,3 +183,6 @@ vlsub: distfiles-dir
 	wget -cO $(DISTFILESDIR)/vlsub.deb http://addons.videolan.org/CONTENT/content-files/148752-vlc-plugin-vlsub_0.9.10_all.deb
 	-sudo dpkg -i $(DISTFILESDIR)/vlsub.deb
 	$(INSTALL) -f
+
+blacklist-pcspkr:
+	sudo cp -f $(BASEDIR)/etc/modprobe.d/blacklist-pcspkr.conf /etc/modprobe.d/blacklist-pcspkr.conf
