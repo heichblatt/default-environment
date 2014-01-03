@@ -129,6 +129,8 @@ sublime-text2: distfiles-dir
 		sudo mv -f ./Sublime\ Text\ 2 /opt/
 	sudo ln -fs /opt/Sublime\ Text\ 2/sublime_text /usr/bin/sublime && \
 	sudo cp -f $(BASEDIR)/usr/share/applications/sublime.desktop /usr/share/applications/sublime.desktop
+	mkdir -pv $(HOME)/.config/sublime-text-2/Packages/Installed\ Packages
+	wget -O $(HOME)/.config/sublime-text-2/Packages/Installed\ Packages/Package\ Control.sublime-package https://sublime.wbond.net/Package%20Control.sublime-package
 
 owncloud-client: distfiles-dir
 	sudo cp -f $(BASEDIR)/etc/apt/sources.list.d/owncloud-client.list /etc/apt/sources.list.d/owncloud-client.list
