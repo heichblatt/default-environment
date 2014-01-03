@@ -186,3 +186,4 @@ vlsub: distfiles-dir
 
 blacklist-pcspkr:
 	sudo cp -f $(BASEDIR)/etc/modprobe.d/blacklist-pcspkr.conf /etc/modprobe.d/blacklist-pcspkr.conf
+	-sudo rmmod pcspkr
