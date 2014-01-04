@@ -47,7 +47,7 @@ veewee:
 		( which veewee | grep veewee || $(INSTALLGEM) veewee $(GEMOPTS) ) # fixed fog version until veewee issue 611 is fixed
 
 remove-all-rubygems:
-	sudo 'gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
+	sudo gem list | cut -d" " -f1 | xargs sudo gem uninstall -aIx
 
 development: git
 	$(INSTALL) gitg meld build-essential
