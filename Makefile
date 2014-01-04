@@ -32,12 +32,17 @@ multimedia:
 network: transmission-remote-gtk
 	$(INSTALL) network-manager-openvpn-gnome nmap wireshark torsocks tor sshfs transgui openssh-server remmina trickle
 
-virtualisation:
+virtualisation: virtualbox #veewee
+
+virtualbox:
 	sudo cp $(BASEDIR)/etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/virtualbox.list
 	wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 	$(UPDATE)
-	$(INSTALL) virtualbox-4.1
+	$(INSTALL) virtualbox-4.1 linux-headers-amd64
+	sudo service vboxdrv setup
 	sudo usermod -aG vboxusers $(USERNAME)
+
+veewee:
 	( gem list | grep "fog (1.8.0)" || $(INSTALLGEM) fog --version 1.8 $(GEMOPTS) ) && \
 		( which veewee | grep veewee || $(INSTALLGEM) veewee $(GEMOPTS) ) # fixed fog version until veewee issue 611 is fixed
 
