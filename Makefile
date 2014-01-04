@@ -41,6 +41,9 @@ virtualisation:
 	( gem list | grep "fog (1.8.0)" || $(INSTALLGEM) fog --version 1.8 $(GEMOPTS) ) && \
 		( which veewee | grep veewee || $(INSTALLGEM) veewee $(GEMOPTS) ) # fixed fog version until veewee issue 611 is fixed
 
+remove-all-rubygems:
+	sudo 'gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
+
 development: git
 	$(INSTALL) gitg meld build-essential
 
