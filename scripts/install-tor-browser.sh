@@ -5,8 +5,8 @@
 
 set -e
 
-URLPREFIX=https://www.torproject.org/download
-URLDOWNLOADPAGE=download-easy.html.en
+URLPREFIX=https://www.torproject.org/dist/torbrowser/3.5/
+URLDOWNLOADPAGE=/
 
 if [ "$#" == "0" ]; then
 	INSTALLDIR="$HOME"/bin
@@ -19,10 +19,10 @@ echo "Using $INSTALLDIR as installation directory."
 mkdir -p "$INSTALLDIR"
 
 # get the current tarball's URL
-URL="$URLPREFIX"/$(wget -q -O- "$URLPREFIX"/"$URLDOWNLOADPAGE" | grep "button lin-tbb6" | grep href | grep tar.gz | cut -d\" -f 4)
+URL="$URLPREFIX"/$(wget -q -O- "$URLPREFIX"/"$URLDOWNLOADPAGE" | grep href | grep tor-browser-linux64 | grep _en-US.tar.xz | grep -v .asc | cut -d\" -f 6)
 
 # download and untar the tarball
-wget -O- "$URL" | tar -xvz -C "$INSTALLDIR"
+wget -O- "$URL" | tar -xvJ -C "$INSTALLDIR"
 
 # write .desktop file
 cat > "$HOME"/.local/share/applications/tor-browser.desktop <<END
