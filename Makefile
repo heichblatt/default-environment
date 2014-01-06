@@ -13,7 +13,7 @@ USERBINDIR=$(HOME)/bin
 USERSRCDIR=$(HOME)/src
 
 all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia vlsub network upgrade autoremove clean
-extras: skype sublime-text2 latex virtualisation multisystem zfs
+extras: skype sublime-text2 latex virtualisation multisystem zfs coursera-dl
 
 upgrade:
 	$(UPDATE)
