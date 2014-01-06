@@ -10,6 +10,7 @@ DOWNLOADDISTFILE=wget --directory-prefix=$(DISTFILESDIR)
 INSTALLGEM=sudo gem install
 GEMOPTS=--no-rdoc --no-ri
 USERBINDIR=$(HOME)/bin
+USERSRCDIR=$(HOME)/src
 
 all: sudoers-nopasswd system productivity user-dirs iceweasel-release development multimedia vlsub network upgrade autoremove clean
 extras: skype sublime-text2 latex virtualisation multisystem zfs
@@ -195,3 +196,13 @@ vlsub: distfiles-dir
 blacklist-pcspkr:
 	sudo cp -f $(BASEDIR)/etc/modprobe.d/blacklist-pcspkr.conf /etc/modprobe.d/blacklist-pcspkr.conf
 	-sudo rmmod pcspkr
+
+usersrcdir:
+	mkdir -p $(USERSRCDIR)
+
+coursera-dl: usersrcdir
+	( cd $(USERSRCDIR) && \
+	git clone https://github.com/dgorissen/coursera-dl.git || ( cd coursera-dl && git pull ) && \
+	cd coursera-dl && \
+	python ./setup.py build && \
+	sudo python ./setup.py install )
