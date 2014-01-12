@@ -104,7 +104,7 @@ git:
 	
 offlineimap-from-source: git distfiles-dir
 	cd $(DISTFILESDIR) && \
-	git clone git://github.com/spaetz/offlineimap.git && \
+	git clone git://github.com/spaetz/offlineimap.git ( cd offlineimap && git pull ) && \
 	cd offlineimap/ && \
 	make clean && make && \
 	sudo checkinstall -y python setup.py install
