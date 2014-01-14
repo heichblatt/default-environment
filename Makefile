@@ -156,7 +156,7 @@ gnome:
 	-$(SCRIPTSDIR)/configure-gnome-shell.sh
 
 kde:
-	$(INSTALL) task-kde-desktop task-german-kde-desktop kde-config-gtk-style gtk2-engines-oxygen gtk3-engines-oxygen krdc amarok kshutdown yakuake kgpg
+	$(INSTALL) task-kde-desktop task-german-kde-desktop kde-config-gtk-style gtk2-engines-oxygen gtk3-engines-oxygen krdc amarok kshutdown yakuake kgpg k4dirstat
 
 xfce4:
 	$(INSTALL) task-xfce-desktop xfce4 xfce4-goodies
